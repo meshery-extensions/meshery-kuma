@@ -17,7 +17,7 @@ project:
     - name: meshery-kuma
       url: https://github.com/meshery/meshery-kuma
       comment: |
-         Website for Meshery.
+         Meshery adapter for Kuma.
   vulnerability-reporting:
     reports-accepted: true
     bug-bounty-available: false
