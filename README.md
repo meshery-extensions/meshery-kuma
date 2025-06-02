@@ -21,7 +21,7 @@
 <a href="https://slack.meshery.io" alt="Slack">
   <img src="https://img.shields.io/badge/Slack-@layer5.svg?logo=slack"></a>
 <a href="https://youtube.com/@mesheryio?sub_confirmation=1" alt="YouTube">
-  <img src="https://img.shields.io/youtube/channel/subscribers/UC0b2d8c5a9e3f7b6c4f8d9A?style=social" /></a>
+  <img src="https://img.shields.io/youtube/channel/subscribers/UCgXlqWDCg-9RP1eckf0s6KA?style=social" /></a>
 <a href="https://bestpractices.coreinfrastructure.org/projects/3564" alt="CLI Best Practices">
   <img src="https://bestpractices.coreinfrastructure.org/projects/3564/badge" /></a>
 </p>
