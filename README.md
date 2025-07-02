@@ -12,7 +12,7 @@
   <img src="https://github.com/meshery/meshery-kuma/workflows/Meshery-Kuma/badge.svg" /></a>
 <a href="https://github.com/meshery/meshery-kuma/blob/master/LICENSE" alt="LICENSE">
   <img src="(https://img.shields.io/github/license/meshery/meshery-kuma.svg" /></a>
-<a href="https://github.com/meshery/meshery-kuma/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22" alt="GitHub issues by-label">
+<a href="https://github.com/issues?q=is%3Aopen%20is%3Aissue%20archived%3Afalse%20(org%3Ameshery%20OR%20org%3Aservice-mesh-performance%20OR%20org%3Aservice-mesh-patterns%20OR%20org%3Ameshery-extensions)%20label%3A%22help%20wanted%22" alt="GitHub issues by-label">
   <img src="https://img.shields.io/github/issues/meshery/meshery-kuma/help%20wanted.svg" /></a>
 <a href="https://meshery.io/" alt="Website">
   <img src="https://img.shields.io/website/https/meshery.io/meshery.svg" /></a>
@@ -80,7 +80,7 @@ Find out more on the <a href="https://meshery.io/community#meshmates">Meshery co
 </div>
 <br /><br />
 <p align="left">
-&nbsp;&nbsp;&nbsp;&nbsp; <i>Not sure where to start?</i> Grab an open issue with the <a href="https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+org%3Alayer5io+org%3Ameshery+org%3Aservice-mesh-performance+org%3Aservice-mesh-patterns+label%3A%22help+wanted%22+">help-wanted label</a>.
+&nbsp;&nbsp;&nbsp;&nbsp; <i>Not sure where to start?</i> Grab an open issue with the <a href="https://github.com/issues?q=is%3Aopen%20is%3Aissue%20archived%3Afalse%20(org%3Ameshery%20OR%20org%3Aservice-mesh-performance%20OR%20org%3Aservice-mesh-patterns%20OR%20org%3Ameshery-extensions)%20label%3A%22help%20wanted%22">help-wanted label</a>.
 </p>
 <br /><br />
 
