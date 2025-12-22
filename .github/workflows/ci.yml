@@ -85,7 +85,7 @@ jobs:
       - uses: dominikh/staticcheck-action@v1
         with:
           install-go: false
-          version: "2024.1"
+          version: "2025.1"
   vet:
     name: Vet
     runs-on: ubuntu-22.04
@@ -129,7 +129,7 @@ jobs:
        with:
         go-version: 1.25
      - name: Create cluster using KinD
-       uses: engineerd/setup-kind@v0
+       uses: engineerd/setup-kind@v0.6.2
        with:
          version: "v0.11.0"
      - run: |
