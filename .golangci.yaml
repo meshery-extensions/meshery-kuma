@@ -71,9 +71,10 @@ linters:
           - gocritic
         text: 'unnecessaryDefer:'
     paths:
-      - third_party$
-      - builtin$
-      - examples$
+      - test/testdata_etc$
+      - internal/cache$
+      - internal/renameio$
+      - internal/robustio$
 formatters:
   enable:
     - gofmt
@@ -85,6 +86,7 @@ formatters:
   exclusions:
     generated: lax
     paths:
-      - third_party$
-      - builtin$
-      - examples$
+      - test/testdata_etc$
+      - internal/cache$
+      - internal/renameio$
+      - internal/robustio$

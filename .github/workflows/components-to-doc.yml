@@ -50,7 +50,7 @@ jobs:
             done
 
       - name: Pushes folder to main repo
-        uses: crykn/copy_folder_to_another_repo_action@v1
+        uses: crykn/copy_folder_to_another_repo_action@v1.0.6
         env:
           API_TOKEN_GITHUB: ${{ secrets.GH_ACCESS_TOKEN }}
         with:
