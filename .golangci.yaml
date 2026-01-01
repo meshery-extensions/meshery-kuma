@@ -1,8 +1,9 @@
 version: "2"
+
 linters:
   default: none
+
   enable:
-    - asciicheck
     - dogsled
     - errcheck
     - gomodguard
@@ -14,32 +15,41 @@ linters:
     - staticcheck
     - unused
     - whitespace
+    - asciicheck
+    - depguard
+    - dupl
+    - exhaustive
+    - gocritic
+    - gocyclo
+    - funlen
+
   settings:
-    dupl:
-      threshold: 100
-    exhaustive:
-      default-signifies-exhaustive: false
     funlen:
-      lines: 100
-      statements: 50
-    goconst:
-      min-len: 2
-      min-occurrences: 2
+      lines: 120
+      statements: 70
+
     gocritic:
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
       disabled-checks:
         - dupImport
         - ifElseChain
         - octalLiteral
         - whyNoLint
         - wrapperFunc
-      enabled-tags:
-        - diagnostic
-        - experimental
-        - opinionated
-        - performance
-        - style
+        - paramTypeCombine    
+        - emptyFallthrough
+        - importShadow        
+        - hugeParam            
+        - rangeValCopy         
+        - sprintfQuotedString
+
     gocyclo:
-      min-complexity: 15
+      min-complexity: 20
+
     govet:
       settings:
         printf:
@@ -48,45 +58,50 @@ linters:
             - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
             - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
             - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
-    lll:
-      line-length: 950
+
+    dupl:
+      threshold: 100
+
+    exhaustive:
+      default-signifies-exhaustive: false
+
     misspell:
       locale: US
-    nolintlint:
-      require-explanation: false
-      require-specific: false
-      allow-unused: false
+
+    goconst:
+      min-len: 2
+      min-occurrences: 2
+
+    lll:
+      line-length: 950
+
+    depguard:
+      rules:
+        main:
+          deny:
+            - pkg: github.com/sirupsen/logrus
+              desc: "logging is allowed only by logutils.Log"
+
   exclusions:
-    generated: lax
-    presets:
-      - comments
-      - common-false-positives
-      - legacy
-      - std-error-handling
+    paths:
+      - test/testdata_etc
+      - internal/cache
+      - internal/renameio
+      - internal/robustio
     rules:
-      - linters:
-          - mnd
-        path: _test\.go
+      - path: _test\.go
+        linters:
+          - gomnd
       - linters:
           - gocritic
-        text: 'unnecessaryDefer:'
-    paths:
-      - test/testdata_etc$
-      - internal/cache$
-      - internal/renameio$
-      - internal/robustio$
+        text: "unnecessaryDefer:"
+        path: ".*"
+
 formatters:
   enable:
     - gofmt
     - goimports
-  settings:
-    goimports:
-      local-prefixes:
-        - github.com/golangci/golangci-lint
-  exclusions:
-    generated: lax
-    paths:
-      - test/testdata_etc$
-      - internal/cache$
-      - internal/renameio$
-      - internal/robustio$
+
+run:
+  timeout: 5m
+
