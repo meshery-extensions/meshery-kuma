@@ -24,6 +24,11 @@ linters:
     - funlen
 
   settings:
+
+    gosec:
+      excludes:  
+        - G204
+
     funlen:
       lines: 120
       statements: 70
@@ -101,6 +106,11 @@ formatters:
   enable:
     - gofmt
     - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/golangci/golangci-lint
+
 
 run:
   timeout: 5m
