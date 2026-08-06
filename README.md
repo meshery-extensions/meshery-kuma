@@ -24,6 +24,7 @@
   <img src="https://img.shields.io/youtube/channel/subscribers/UCgXlqWDCg-9RP1eckf0s6KA?style=social" /></a>
 <a href="https://bestpractices.coreinfrastructure.org/projects/3564" alt="CLI Best Practices">
   <img src="https://bestpractices.coreinfrastructure.org/projects/3564/badge" /></a>
+<a href="https://github.com/meshery/meshery/blob/master/GOVERNANCE.md#extensions-githubcommeshery-extensions"><img src="https://img.shields.io/badge/support-official-2f6feb?style=flat-square&logo=meshery&logoColor=white"  alt="Level of support for this repo"></a>  
 </p>
 
 # Meshery Adapter for Kuma
