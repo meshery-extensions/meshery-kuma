@@ -6,6 +6,9 @@ on:
     paths:
       - '**.go'
 
+permissions:
+  contents: read
+
 jobs:
   Update-error-codes:
     name: Error codes utility
