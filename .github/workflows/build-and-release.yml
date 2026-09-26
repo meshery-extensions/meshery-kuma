@@ -8,6 +8,9 @@ on:
     paths-ignore:
       - '.github/**'
 
+permissions:
+  contents: read
+  
 jobs:
   build:
     name: Build check

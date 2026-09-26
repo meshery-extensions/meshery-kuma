@@ -25,6 +25,9 @@ on:
           required: true
           default: 'edge'
 
+permissions:
+  contents: read
+
 env:
   GIT_VERSION: ${{github.event.inputs.release-ver}}
   GIT_STRIPPED_VERSION: ${{github.event.inputs.stripped-release-ver}}
