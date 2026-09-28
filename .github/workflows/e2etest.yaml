@@ -40,9 +40,14 @@ jobs:
           repository: kumahq/kuma
           excludes: prerelease, draft
       - name: Change service mesh version in patternfile
+        env:
+          KUMA_VERSION: ${{ steps.gettag.outputs.release }}
         run: | 
-           
-           yq e -i '.services.kuma.version="${{ steps.gettag.outputs.release }}"' ./.github/install/deploy.yaml 
+           UUID=$(uuidgen)
+           yq e -i '.services.kuma.version = strenv(KUMA_VERSION)' ./.github/install/deploy.yaml
+           yq e -i ".services.kuma.traits.meshmap.id=\"$UUID\"" ./.github/install/deploy.yaml
+           yq e -i '.services.kuma.traits.meshmap.position.posX=0' ./.github/install/deploy.yaml
+           yq e -i '.services.kuma.traits.meshmap.position.posY=0' ./.github/install/deploy.yaml
            cat ./.github/install/deploy.yaml
       - name: Uploading file
         uses: actions/upload-artifact@v4
@@ -71,7 +76,7 @@ jobs:
 
   UpdateDocs:
     needs: TestKuma
-    if:  "always() && github.event_name != 'pull_request' "
+    if: ${{ needs.TestKuma.result == 'success' && github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Skip if needed

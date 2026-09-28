@@ -52,13 +52,13 @@ func (kuma *Kuma) sidecarInjection(namespace string, del bool, kubeconfigs []str
 			}
 
 			// updating the annotations on the namespace
-			if ns.ObjectMeta.Annotations == nil {
-				ns.ObjectMeta.Annotations = map[string]string{}
+			if ns.Annotations == nil {
+				ns.Annotations = map[string]string{}
 			}
-			ns.ObjectMeta.Annotations["kuma.io/sidecar-injection"] = "enabled"
+			ns.Annotations["kuma.io/sidecar-injection"] = "enabled"
 
 			if del {
-				delete(ns.ObjectMeta.Annotations, "kuma.io/sidecar-injection")
+				delete(ns.Annotations, "kuma.io/sidecar-injection")
 			}
 
 			_, err = kClient.KubeClient.CoreV1().Namespaces().Update(context.TODO(), ns, metav1.UpdateOptions{})
