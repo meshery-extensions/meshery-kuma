@@ -6,4 +6,5 @@ services:
     model: KUMA
     namespace: kuma
     version: #will be inserted dynamically
-      
+    traits:
+      meshmap: {}

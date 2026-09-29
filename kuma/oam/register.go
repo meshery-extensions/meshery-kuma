@@ -119,7 +119,7 @@ func registerComponentDefinition(contextID, registryURL, host string, port int, 
 	}
 
 	component := map[string]interface{}{
-		"schemaVersion": "components.meshery.io/v1beta2",
+		"schemaVersion": "components.meshery.io/v1beta3",
 		"version":       "v1.0.0",
 		"displayName":   legacy.DisplayName,
 		"format":        legacy.Format,
@@ -181,7 +181,7 @@ func registerComponentDefinition(contextID, registryURL, host string, port int, 
 		if response.StatusCode < http.StatusOK || response.StatusCode >= http.StatusMultipleChoices {
 			body, _ := io.ReadAll(response.Body)
 			err := fmt.Errorf("registry rejected component %q with %s: %s", legacy.Kind, response.Status, strings.TrimSpace(string(body)))
-			if response.StatusCode >= http.StatusBadRequest && response.StatusCode < http.StatusInternalServerError && response.StatusCode != http.StatusTooManyRequests {
+			if response.StatusCode >= http.StatusBadRequest && response.StatusCode < http.StatusInternalServerError && response.StatusCode != http.StatusTooManyRequests && response.StatusCode != http.StatusRequestTimeout {
 				return backoff.Permanent(err)
 			}
 			return err
