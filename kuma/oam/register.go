@@ -177,10 +177,14 @@ func registerComponentDefinition(contextID, registryURL, host string, port int, 
 		if err != nil {
 			return err
 		}
-		defer response.Body.Close()
+		defer func() { _ = response.Body.Close() }()
 		if response.StatusCode < http.StatusOK || response.StatusCode >= http.StatusMultipleChoices {
 			body, _ := io.ReadAll(response.Body)
-			return fmt.Errorf("registry rejected component %q with %s: %s", legacy.Kind, response.Status, strings.TrimSpace(string(body)))
+			err := fmt.Errorf("registry rejected component %q with %s: %s", legacy.Kind, response.Status, strings.TrimSpace(string(body)))
+			if response.StatusCode >= http.StatusBadRequest && response.StatusCode < http.StatusInternalServerError && response.StatusCode != http.StatusTooManyRequests {
+				return backoff.Permanent(err)
+			}
+			return err
 		}
 		return nil
 	}, backoffPolicy)

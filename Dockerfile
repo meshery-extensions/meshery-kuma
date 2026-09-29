@@ -25,5 +25,6 @@ ENV DISTRO="debian"
 ENV SERVICE_ADDR="meshery-kuma"
 ENV MESHERY_SERVER="http://meshery:9081"
 COPY templates/ ./templates
+COPY build/meshmodel_metadata.json ./build/meshmodel_metadata.json
 COPY --from=builder /build/meshery-kuma .
 ENTRYPOINT ["/meshery-kuma"]
