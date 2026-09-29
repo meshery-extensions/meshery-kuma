@@ -2,6 +2,9 @@ name: Kuma
 services:
   kuma:
     type: KumaMesh
+    apiVersion: core.meshmodel.dev/v1alpha1
+    model: KUMA
     namespace: kuma
     version: #will be inserted dynamically
-      
+    traits:
+      meshmap: {}

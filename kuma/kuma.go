@@ -87,7 +87,7 @@ func (kuma *Kuma) ApplyOperation(ctx context.Context, opReq adapter.OperationReq
 		go func(hh *Kuma, ee *meshes.EventsResponse) {
 			name := operations[opReq.OperationName].Description
 			_, err := hh.RunSMITest(adapter.SMITestOptions{
-				Ctx:         context.TODO(),
+				Ctx:         context.WithoutCancel(ctx),
 				OperationID: ee.OperationId,
 				Kubeconfigs: kubeconfigs,
 				Manifest:    string(operations[opReq.OperationName].Templates[0]),
