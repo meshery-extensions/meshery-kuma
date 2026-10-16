@@ -19,11 +19,12 @@ RUN GOPROXY=https://proxy.golang.org,direct CGO_ENABLED=1 GOOS=linux GO111MODULE
 
 # Use distroless as minimal base image to package the manager binary
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
-FROM gcr.io/distroless/nodejs:latest
+FROM gcr.io/distroless/base-debian12:latest
 WORKDIR /
 ENV DISTRO="debian"
 ENV SERVICE_ADDR="meshery-kuma"
 ENV MESHERY_SERVER="http://meshery:9081"
 COPY templates/ ./templates
+COPY build/meshmodel_metadata.json ./build/meshmodel_metadata.json
 COPY --from=builder /build/meshery-kuma .
 ENTRYPOINT ["/meshery-kuma"]

@@ -123,7 +123,7 @@ func serviceAddress() string {
 
 func registerCapabilities(port string, log logger.Handler) {
 	// Register meshmodel components
-	if err := oam.RegisterMeshModelComponents(instanceID, mesheryServerAddress(), serviceAddress(), port); err != nil {
+	if err := oam.RegisterMeshModelComponents(instanceID, mesheryServerAddress(), serviceAddress(), port, build.LatestVersion); err != nil {
 		log.Info(err.Error())
 	}
 }
@@ -174,7 +174,7 @@ func registerWorkloads(port string, log logger.Handler) {
 
 	//Now we will register in case
 	log.Info("Registering workloads with Meshery Server for version ", version)
-	if err := oam.RegisterMeshModelComponents(instanceID, mesheryServerAddress(), serviceAddress(), port); err != nil {
+	if err := oam.RegisterMeshModelComponents(instanceID, mesheryServerAddress(), serviceAddress(), port, version); err != nil {
 		log.Info(err.Error())
 		return
 	}
